@@ -1,0 +1,592 @@
+/* ─── Custom Properties ──────────────────────────────── */
+:root {
+  --bg: #faf6ee;
+  --bg-alt: #f0ece3;
+  --text: #2b2b2b;
+  --text-muted: #8b8578;
+  --accent: #96722e;
+  --accent-hover: #7a5c22;
+  --accent-light: rgba(150, 114, 46, 0.12);
+  --border: #e0d9cc;
+  --hero-bg: #1c1917;
+  --hero-text: #faf6ee;
+  --hero-muted: #a8a29e;
+  --font-body: 'Alegreya', Georgia, 'Times New Roman', serif;
+  --font-sc: 'Alegreya SC', 'Alegreya', Georgia, serif;
+  --max-w: 700px;
+  --transition: 0.2s ease;
+}
+
+/* ─── Reset ──────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+img { max-width: 100%; display: block; }
+
+/* ─── Base ───────────────────────────────────────────── */
+html {
+  font-size: 18px;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+a:hover { color: var(--accent-hover); }
+
+::selection {
+  background: var(--accent-light);
+  color: var(--text);
+}
+
+/* ─── Layout ─────────────────────────────────────────── */
+.container {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+section {
+  padding: 5rem 0;
+}
+
+/* ─── Hero ───────────────────────────────────────────── */
+.hero {
+  background: var(--hero-bg);
+  color: var(--hero-text);
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 4rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 40%, rgba(150, 114, 46, 0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-novel {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--hero-muted);
+  letter-spacing: 0.2em;
+  margin-bottom: 1.5rem;
+}
+
+.hero-title {
+  font-family: var(--font-body);
+  font-weight: 800;
+  font-size: clamp(2.5rem, 7vw, 4.5rem);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+}
+
+.hero-tagline {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: clamp(1rem, 2.5vw, 1.35rem);
+  color: var(--hero-muted);
+  max-width: 500px;
+  line-height: 1.6;
+  margin-bottom: 3rem;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* ─── Buttons ────────────────────────────────────────── */
+.btn {
+  display: inline-block;
+  font-family: var(--font-sc);
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  padding: 0.85em 2em;
+  border-radius: 2px;
+  transition: all var(--transition);
+  cursor: pointer;
+  border: none;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+}
+.btn-primary:hover {
+  background: var(--accent-hover);
+  color: #fff;
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--hero-muted);
+  border: 1px solid rgba(168, 162, 158, 0.3);
+}
+.btn-outline:hover {
+  color: var(--hero-text);
+  border-color: rgba(168, 162, 158, 0.6);
+}
+
+/* ─── Scroll hint ────────────────────────────────────── */
+.scroll-hint {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--hero-muted);
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  font-family: var(--font-sc);
+  opacity: 0.5;
+  animation: gentle-bounce 3s ease-in-out infinite;
+}
+
+@keyframes gentle-bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(6px); }
+}
+
+/* ─── About Section ──────────────────────────────────── */
+.about {
+  border-bottom: 1px solid var(--border);
+}
+
+.about-text {
+  font-size: 1.15rem;
+  line-height: 2;
+  color: var(--text);
+  max-width: 620px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* ─── Section Headings ───────────────────────────────── */
+section h2 {
+  font-family: var(--font-sc);
+  font-size: 1.5rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-align: center;
+  margin-bottom: 2.5rem;
+  color: var(--text);
+}
+
+/* ─── Table of Contents ──────────────────────────────── */
+.toc {
+  border-bottom: 1px solid var(--border);
+}
+
+#toc-list {
+  list-style: none;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+#toc-list li {
+  border-bottom: 1px solid var(--border);
+}
+
+#toc-list li:last-child {
+  border-bottom: none;
+}
+
+#toc-list a {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 1rem 0.5rem;
+  color: var(--text);
+  transition: all var(--transition);
+}
+
+#toc-list a:hover {
+  color: var(--accent);
+  padding-left: 1rem;
+}
+
+.ch-number {
+  font-family: var(--font-sc);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+  min-width: 5.5rem;
+}
+
+.ch-title {
+  font-style: italic;
+  font-size: 1.1rem;
+}
+
+/* ─── Language Toggle ────────────────────────────────── */
+.lang-toggle {
+  display: flex;
+  justify-content: center;
+  gap: 0.25rem;
+  margin-bottom: 2rem;
+}
+
+.lang-toggle button {
+  font-family: var(--font-sc);
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  padding: 0.4em 1em;
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.lang-toggle button:first-child { border-radius: 3px 0 0 3px; }
+.lang-toggle button:last-child  { border-radius: 0 3px 3px 0; }
+.lang-toggle button:not(:first-child) { border-left: none; }
+
+.lang-toggle button.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.lang-toggle button:hover:not(.active) {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* ─── Buy Section ────────────────────────────────────── */
+.buy-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.buy-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--text);
+  transition: all var(--transition);
+  position: relative;
+}
+
+.buy-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 2px 20px rgba(150, 114, 46, 0.08);
+  color: var(--text);
+}
+
+.buy-card h3 {
+  font-family: var(--font-sc);
+  font-size: 1.1rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.35rem;
+}
+
+.buy-card p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+
+.badge {
+  font-family: var(--font-sc);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  padding: 0.3em 0.8em;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  color: var(--text-muted);
+}
+
+/* ─── Footer ─────────────────────────────────────────── */
+footer {
+  padding: 3rem 0;
+  text-align: center;
+  font-family: var(--font-sc);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+  border-top: 1px solid var(--border);
+}
+
+/* ─── Progress Bar ───────────────────────────────────── */
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: var(--accent);
+  width: 0;
+  z-index: 200;
+  transition: width 0.15s linear;
+}
+
+/* ─── Reader Header ──────────────────────────────────── */
+.reader-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  padding: 0.8rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.reader-header .home-link {
+  font-family: var(--font-sc);
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+}
+.reader-header .home-link:hover { color: var(--accent); }
+
+.reader-header .book-title {
+  font-family: var(--font-sc);
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  color: var(--text);
+  text-transform: uppercase;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* ─── Chapter Body ───────────────────────────────────── */
+.chapter-body {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 4rem 2rem 6rem;
+}
+
+.chapter-body h1 {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 1.8rem;
+  text-align: center;
+  margin-bottom: 3rem;
+  line-height: 1.3;
+}
+
+.chapter-body p {
+  margin-bottom: 1.4em;
+  font-size: 1.1rem;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.chapter-body em {
+  font-style: italic;
+}
+
+.chapter-body strong {
+  font-weight: 700;
+}
+
+/* Nael's typed messages */
+.chapter-body code {
+  font-family: 'Menlo', 'Consolas', 'Courier New', monospace;
+  font-size: 0.88em;
+  background: var(--bg-alt);
+  padding: 0.15em 0.45em;
+  border-radius: 3px;
+  color: var(--text);
+}
+
+/* AI dialogue blocks */
+.ai-dialogue {
+  border-left: 3px solid var(--accent);
+  margin: 2em 0;
+  padding: 1.2em 1.5em;
+  background: var(--bg-alt);
+  font-style: italic;
+  font-size: 1.05rem;
+  line-height: 1.75;
+  border-radius: 0 3px 3px 0;
+}
+
+/* Scene breaks */
+.scene-break {
+  text-align: center;
+  margin: 3rem 0;
+  font-size: 1.2rem;
+  letter-spacing: 0.6em;
+  color: var(--text-muted);
+  user-select: none;
+}
+
+/* ─── Chapter Navigation ─────────────────────────────── */
+.chapter-nav {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 2rem 2rem 5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--border);
+}
+
+.chapter-nav a {
+  font-family: var(--font-sc);
+  font-size: 0.9rem;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  padding: 0.6em 1em;
+  transition: color var(--transition);
+}
+
+.chapter-nav a:hover { color: var(--accent); }
+
+.chapter-nav .home-nav {
+  color: var(--text-muted);
+}
+
+/* ─── Loading State ──────────────────────────────────── */
+.loading {
+  text-align: center;
+  padding: 6rem 2rem;
+  color: var(--text-muted);
+  font-style: italic;
+  font-size: 1.1rem;
+}
+
+.error-message {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: var(--accent);
+  font-style: italic;
+}
+
+/* ─── RTL Support (Arabic) ───────────────────────────── */
+[dir="rtl"] {
+  font-family: 'Alegreya', 'Amiri', 'Traditional Arabic', serif;
+}
+
+[dir="rtl"] .reader-header {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .reader-header .home-link::before {
+  content: '\2192';
+}
+[dir="rtl"] .reader-header .home-link {
+  unicode-bidi: plaintext;
+}
+
+[dir="rtl"] .ai-dialogue {
+  border-left: none;
+  border-right: 3px solid var(--accent);
+  border-radius: 3px 0 0 3px;
+}
+
+[dir="rtl"] #toc-list a {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] #toc-list a:hover {
+  padding-left: 0.5rem;
+  padding-right: 1rem;
+}
+
+[dir="rtl"] .chapter-nav {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .chapter-body p {
+  text-align: right;
+}
+
+[dir="rtl"] .progress-bar {
+  left: auto;
+  right: 0;
+}
+
+[dir="rtl"] .lang-toggle {
+  direction: ltr;
+}
+
+/* ─── Responsive ─────────────────────────────────────── */
+@media (max-width: 768px) {
+  html { font-size: 17px; }
+
+  section { padding: 3.5rem 0; }
+  .container { padding: 0 1.5rem; }
+
+  .hero { min-height: 90vh; min-height: 90dvh; padding: 3rem 1.5rem; }
+  .hero-title { letter-spacing: 0.08em; }
+
+  .reader-header .book-title { display: none; }
+  .reader-header { padding: 0.8rem 1.5rem; }
+
+  .chapter-body { padding: 3rem 1.5rem 5rem; }
+  .chapter-body p { text-align: left; hyphens: none; }
+
+  .chapter-nav { padding: 2rem 1.5rem 4rem; }
+}
+
+@media (max-width: 480px) {
+  html { font-size: 16px; }
+
+  .hero { padding: 2.5rem 1.25rem; }
+  .hero-actions { flex-direction: column; align-items: center; }
+  .btn { width: 100%; max-width: 280px; text-align: center; }
+
+  .container { padding: 0 1.25rem; }
+  .chapter-body { padding: 2.5rem 1.25rem 4rem; }
+
+  .ai-dialogue { padding: 1em 1.1em; margin: 1.5em 0; }
+
+  .buy-grid { grid-template-columns: 1fr; }
+}
+
+/* ─── Print ──────────────────────────────────────────── */
+@media print {
+  .hero, .reader-header, .progress-bar,
+  .chapter-nav, .lang-toggle, footer { display: none; }
+
+  .chapter-body {
+    max-width: 100%;
+    padding: 0;
+    font-size: 12pt;
+  }
+
+  .ai-dialogue {
+    border-left: 2px solid #666;
+    background: none;
+  }
+
+  .scene-break { color: #666; }
+}
